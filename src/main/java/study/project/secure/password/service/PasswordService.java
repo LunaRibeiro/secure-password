@@ -29,7 +29,7 @@ public class PasswordService {
 
     private void validateNumberCase(String pass, List<String> failures) {
         if(!Pattern.matches(".*[0-9].*", pass)){
-            failures.add("A senha deve possuir pelo menos um letra maiúscula");
+            failures.add("A senha deve possuir pelo menos um digito numérico");
         }
     }
 
