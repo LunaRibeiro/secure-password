@@ -12,7 +12,15 @@ public class PasswordService {
     public List<String> validatePass(String pass) {
         List<String> failures = new ArrayList<String>();
 
+        validateLength(pass, failures);
+
         return failures;
+    }
+
+    private void validateLength(String pass, List<String> failures) {
+        if(pass != null && pass.length() < 8) {
+            failures.add("A senha deve possuir pelo menos 8 caractesres");
+        }
     }
 
 }
