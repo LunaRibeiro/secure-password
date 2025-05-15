@@ -17,19 +17,14 @@ public class PasswordService {
         validateUpperCase(pass, failures);
         validateLowerCase(pass, failures);
         validateNumberCase(pass, failures);
+        validateSpecialCharacter(pass, failures);
 
         return failures;
     }
 
-    private void validateUpperCase(String pass, List<String> failures) {
-        if(!Pattern.matches(".*[A-Z].*", pass)){
-            failures.add("A senha deve possuir pelo menos um letra maiúscula");
-        }
-    }
-
-    private void validateNumberCase(String pass, List<String> failures) {
-        if(!Pattern.matches(".*[0-9].*", pass)){
-            failures.add("A senha deve possuir pelo menos um digito numérico");
+    private void validateLength(String pass, List<String> failures) {
+        if(pass != null && pass.length() < 8) {
+            failures.add("A senha deve possuir pelo menos 8 caractesres");
         }
     }
 
@@ -39,9 +34,21 @@ public class PasswordService {
         }
     }
 
-    private void validateLength(String pass, List<String> failures) {
-        if(pass != null && pass.length() < 8) {
-            failures.add("A senha deve possuir pelo menos 8 caractesres");
+    private void validateNumberCase(String pass, List<String> failures) {
+        if(!Pattern.matches(".*[0-9].*", pass)){
+            failures.add("A senha deve possuir pelo menos um digito numérico");
+        }
+    }
+
+    private void validateUpperCase(String pass, List<String> failures) {
+        if(!Pattern.matches(".*[A-Z].*", pass)){
+            failures.add("A senha deve possuir pelo menos um letra maiúscula");
+        }
+    }
+
+    private void validateSpecialCharacter(String pass, List<String> failures) {
+        if(!Pattern.matches(".*[\\W].*", pass)){
+            failures.add("A senha deve possuir pelo menos um caracter especial");
         }
     }
 
