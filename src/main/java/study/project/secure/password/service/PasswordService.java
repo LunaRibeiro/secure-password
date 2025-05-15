@@ -16,12 +16,19 @@ public class PasswordService {
         validateLength(pass, failures);
         validateUpperCase(pass, failures);
         validateLowerCase(pass, failures);
+        validateNumberCase(pass, failures);
 
         return failures;
     }
 
     private void validateUpperCase(String pass, List<String> failures) {
         if(!Pattern.matches(".*[A-Z].*", pass)){
+            failures.add("A senha deve possuir pelo menos um letra maiúscula");
+        }
+    }
+
+    private void validateNumberCase(String pass, List<String> failures) {
+        if(!Pattern.matches(".*[0-9].*", pass)){
             failures.add("A senha deve possuir pelo menos um letra maiúscula");
         }
     }
